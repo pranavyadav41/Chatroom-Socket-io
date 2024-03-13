@@ -18,22 +18,33 @@
 
     })
 
-    app.querySelector(".chat-screen #send-message").addEventListener("click",function(){
-        let message=app.querySelector(".chat-screen #message-input").value;
-        if(message.length==0){
+    app.querySelector(".chat-screen #send-message").addEventListener("click", function() {
+        sendMessage();
+    });
+    
+    // Add event listener for Enter key press
+    app.querySelector(".chat-screen #message-input").addEventListener("keypress", function(event) {
+        if (event.key === "Enter") {
+            sendMessage();
+        }
+    });
+    
+    function sendMessage() {
+        let message = app.querySelector(".chat-screen #message-input").value.trim();
+        if (message.length === 0) {
             return;
         }
-        renderMessage("my",{
-            username:uname,
-            text:message
+        renderMessage("my", {
+            username: uname,
+            text: message
         });
-        socket.emit("chat",{
-            username:uname,
-            text:message
+        socket.emit("chat", {
+            username: uname,
+            text: message
         });
-        app.querySelector(".chat-screen #message-input").value="";
-    });
-
+        app.querySelector(".chat-screen #message-input").value = "";
+    }
+    
     app.querySelector(".chat-screen #exit-chat").addEventListener("click",function(){
         socket.emit("exituser",uname);
         window.location.href = window.location.href;

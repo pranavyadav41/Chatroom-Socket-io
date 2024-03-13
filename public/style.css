@@ -7,9 +7,16 @@
     background-image: url('wallpaperflare.com_wallpaper (13).jpg');
 }
 .ab{
-    border-radius: 15px;
+    border-radius: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     
 }
+.ab::placeholder {
+        color: #999;
+    }
 body{
     font-family:"Roboto",sans-serif ;
     height:100vh;
@@ -65,8 +72,9 @@ body{
 .screen .form-input input {
     width:100%;
     padding:10px;
-    border:1px solid #555;
+    border:none;    
     font-size:16px;
+    /* edited */
 
 }
 .screen .form-input button {
@@ -77,6 +85,7 @@ body{
     cursor:pointer;
     outline:none;
     border:none;
+    
 }
 
 .chat-screen .header {
