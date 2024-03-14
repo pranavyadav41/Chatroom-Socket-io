@@ -17,12 +17,14 @@ io.on("connection", function(socket){
         socket.broadcast.emit("update" , username + " left the conversation");
     })
     socket.on("chat",function(message){
-        console.log("Received chat message:", message);
+        // console.log("Received chat message:", message);
         socket.broadcast.emit("chat",message);
     });
 
 });
 
-server.listen(5000);
+server.listen(5000,()=>{
+    console.log(`Server running on http://localhost:5000/`)
+});
 
 
